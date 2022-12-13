@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
+
 @Service
 @AllArgsConstructor
 public class BookService {
@@ -25,17 +27,8 @@ public class BookService {
         return repository.saveAll(toUpdate);
     }
 
-    //TODO-3: should I use Integer here or int ? Why ?
-    public BookEntity deleteBook(int BookEntityId) {
-        /*
-        TIPS: From the API, the Class Optional<T> is :
-        A container object which may or may not contain a non-null value.
-        If a value is present, isPresent() returns true.
-        If no value is present, the object is considered empty and isPresent() returns false.
-
-        T is the type of the value, for example : here the class type is BookEntity
-         */
-        Optional<BookEntity> optional = repository.findById(String.valueOf(BookEntityId));
+    public BookEntity deleteBook(int id) {
+        Optional<BookEntity> optional = repository.findById(id);
         if (optional.isPresent()) {
             repository.delete(optional.get());
             return optional.get();
@@ -48,7 +41,7 @@ public class BookService {
         Link 1 : https://www.baeldung.com/spring-response-entity
         Link 2 : https://www.baeldung.com/exception-handling-for-rest-with-spring
          */
-            throw new RuntimeException("BookEntity." + BookEntityId + " not found");
+            throw new RuntimeException("BookEntity." + id +" not found");
         }
     }
 }

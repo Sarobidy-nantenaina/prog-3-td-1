@@ -1,8 +1,8 @@
 package app.prog.controller.mapper;
 
-import app.prog.controller.response.BookResponse;
-import app.prog.controller.response.CreateBookResponse;
-import app.prog.controller.response.UpdateBookResponse;
+import app.prog.controller.response.BookResponse.BookResponse;
+import app.prog.controller.response.BookResponse.CreateBookResponse;
+import app.prog.controller.response.BookResponse.UpdateBookResponse;
 import app.prog.model.BookEntity;
 import org.springframework.stereotype.Component;
 

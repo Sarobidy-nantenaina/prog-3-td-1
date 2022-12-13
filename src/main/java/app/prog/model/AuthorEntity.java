@@ -1,5 +1,6 @@
 package app.prog.model;
 
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,26 +8,26 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
-@Table(name = "book")
+@Table(name = "author")
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class BookEntity {
+public class AuthorEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String title;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_author")
-    private AuthorEntity author;
-    private Integer pageNumber;
-    private LocalDate releaseDate;
+    private String name;
+    private String particularity;
+    private LocalDate birthdate;
 
-    public boolean hasAuthor() {
-        return author != null;
+    public  boolean hasParticularity() {
+        return  particularity != null;
     }
+
 
 }
